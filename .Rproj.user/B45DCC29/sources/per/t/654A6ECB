@@ -3,7 +3,7 @@
     "path": "/Volumes/ZEK/R_projects/Meta/R_course.R",
     "project_path": "R_course.R",
     "type": "r_source",
-    "hash": "1676471611",
+    "hash": "2114279740",
     "contents": "",
     "dirty": false,
     "created": 1669313817053.0,
@@ -17,11 +17,11 @@
         "scrollLine": "0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1669326465,
+    "lastKnownWriteTime": 1669475811,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1669326465066,
+    "last_content_update": 1669475811,
     "read_only": false,
     "read_only_alternatives": []
 }
