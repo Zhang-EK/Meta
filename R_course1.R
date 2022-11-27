@@ -100,7 +100,7 @@ treatment <- rep("Treated",9)
 sex <- rep("Male",9)
 age <- c(27,29,30,32,46,58,59,59,63)
 improved <- c("some","none","none","marked","marked","marked","none","marked","none")
-x <- data.frame(id,treatment,sex,age,improved)
+x <- data.frame(ID=id,treatment,sex,age,improved)
 
 x$City  #学会$
 
@@ -114,14 +114,35 @@ dta <- na.omit(x[unique(y$gene),])
 write.csv(dta, file = "Rdata/86genes.csv")
 ###########
 
+#######factor因子#######
+#因子包括离散型和有序性数据（也就是除了数字）
+#可以用来分组
+x <- c("M","W","M","M","W","W","M")
+x <- factor(x)
+table(x)
+levels(x)
+
+########列表##########
+#没有任何限制，多种数据结构都可以放在一起
+
+
+########time series时间序列#####
+class(presidents)
+#这是一个单独的种类有可能是因为其列之间属于是连续性数据，可以进行比较，而不是相对独立的不同个体向量
+
+######缺失数据######
+#也就是NA,na不代表0
+x <- 1:5
+x[7] <- 7
+mean(x)
+is.na(x)
+mean(x, na.rm = T)  #将na去除
+
+#######类########
+#就是一种特殊的列表
+
+######以后每敲一行代码都要知道该数据是什么类型
 
 
 
 
-
-
-
-
-
-
- 
