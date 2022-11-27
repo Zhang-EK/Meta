@@ -32,5 +32,18 @@ y <- runif(100000,min = 1, max = 100)
 z <- data.frame(x=x, y=y)
 #使用saveRDS() save()这两个命令 RDS单个数据集，Rdata是多个数据集
 
+##########数据结构######
+##vector 其实就是一个数字或者字符的集合 所有数据都是由向量构成的
+a <- c(1,2)
+class(a)
+a <- c(1, "apple")
+class(a)
+seq()
+rep()
+##character 字符
+
+
+
+
 
 
