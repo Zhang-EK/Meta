@@ -95,7 +95,52 @@ round(cor(state.x77), digits = 2)
 cor.test(state.x77[,5],state.x77[,3])
 cor.test(state.x77[,5],state.x77[,4])
 
+#######统计建模#######
+#回归 regression 数据挖掘
+#数据建模不是使用的等号方程 而是使用的相关性
+women
+plot(women$height,women$weight, type = "line")   #线性模型
+fit <- lm(weight ~ height, data = women)   #y=3.45*x-87.52
+summary(fit)
+plot(fit)
 
+newdata <- data.frame(height=c(73,60))
+predict(object = fit, newdata = newdata )
 
+#线性回归的函数
+lm()
+summary()
+coef()
+resid()
+fitted()
+predict() #根据模型预测新数据 
+
+#评价模型：R方 pvalue 残差值
+
+###########
+state.x77 <- as.data.frame(state.x77)
+colnames(state.x77)
+fit <- lm(state.x77$Murder ~ state.x77$Population+state.x77$Income+state.x77$Illiteracy+state.x77$`Life Exp`+state.x77$`HS Grad`+state.x77$Frost+state.x77$Area, data = state.x77)
+fit %>% summary()
+fit2 <- lm(state.x77$Murder ~ state.x77$Population+state.x77$`Life Exp`, data = state.x77) #调整，排列组合了
+fit2 %>% summary()
+
+######建模估算基因组大小和基因多少的关系######
+x <- read.csv("Rdata/prok_representative.csv")
+colnames(x)
+fit <- lm(x$Genes ~ x$Size, data = x)
+summary(fit)      #y=843.7x+286.59
+
+plot(x$Size,x$Genes, pch = 16, cex=0.8, xlab = "Genome Size", ylab = "Genes Numbers", main = "Genomesize with Gene Numbers") + 
+  abline(fit, col="blue") +
+  text(3.5, 10000, label = "y=843.7x+286.6 \n R2=0.9676")    #弄个大概扔到pdf中改就行了
+
+x[x$Size>15,]
+x[x$Size<5 & x$Genes>6000,]    #两个在直线之外的值
+plot(x$Size,x$Genes, pch = 16, cex=0.8, xlab = "Genome Size", ylab = "Genes Numbers", main = "Genomesize with Gene Numbers") + 
+  abline(fit, col="blue") +
+  text(3.5, 10000, label = "y=843.7x+286.6 \n R2=0.9676") +
+  text(10, 3000, label = "Corynebacterium striatum") +
+  text(3.5, 5000, label = "Candidatus Burkholderia \n kirkii UZHbot1")
 
 
