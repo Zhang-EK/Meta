@@ -143,4 +143,54 @@ plot(x$Size,x$Genes, pch = 16, cex=0.8, xlab = "Genome Size", ylab = "Genes Numb
   text(10, 3000, label = "Corynebacterium striatum") +
   text(3.5, 5000, label = "Candidatus Burkholderia \n kirkii UZHbot1")
 
+#######购物篮分析 关联规则######
+install.packages("arules")
+library(arules)
+data("Groceries")
+class(Groceries)
+Groceries@itemInfo
+#transaction 数据类型
+inspect(Groceries)
+###建模
+fit <- apriori(Groceries, parameter = list(support=0.01, confidence=0.5))
+summary(fit)
+inspect(fit)
+
+#######歌单########
+class(audioscrobbler)
+dim(audioscrobbler)
+fit <- apriori(audioscrobbler, parameter = new("APparameter", support=0.0645))
+inspect(fit)
+
+########机器学习预测乳腺癌##########
+x <- read.csv("Rdata/breast.csv", row.names = 1)
+x <- x[,-1]
+x$class <- as.factor(x$class)
+levels(x$class) <- c("Benign", "Nalignant")
+
+set.seed(1234)
+train <- sample(699, 489) 
+x.train <- x[train,]
+x.validate <- x[-train,]
+table(x.validate$class)
+table(x.train$class)
+
+#建模 逻辑回归 分类
+fit <- glm(class~., data = x.train, family = binomial())
+summary(fit)
+coef(fit)
+
+#验证模型
+pred <- predict(fit, x.validate, type = "response")
+pred
+result <- factor(pred>0.5, levels = c(F,T), labels = c("Benign","Nalignant"))
+table(x.validate$class)
+table(result)
+
+#生成混淆矩阵
+table(x.validate$class, result)
+#阳性 阴性 假阳 假阴
+
+
+
 
