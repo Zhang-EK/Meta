@@ -23,6 +23,7 @@
 :bulb:  [Unix系统基本使用](https://zhang-ek.github.io/2022/12/01/Unix_intro/)  
 
 ## 生信软件心得
+:bulb:  [二代、三代测序软件及分析流程整理](https://zhang-ek.github.io/2022/12/09/基因测序分析软件及流程（非meta）/)  
 
 
 
